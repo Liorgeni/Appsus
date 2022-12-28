@@ -1,0 +1,9 @@
+/* setup  */
+
+@import './font-face.css';
+@import './vars.css';
+
+/* cmps  */
+
+@import '../cmps/mail-index.css';
+@import '../cmps/email-list.css';

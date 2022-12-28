@@ -1,0 +1,24 @@
+.email-list li{
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    background-color: var(--clr0);
+    height: 2.8571em;
+    width: 80vw;
+    padding-left: 20px;
+    
+    /* border-start-start-radius: 16px; */
+}
+
+.email-list li:first-child{
+    border-start-end-radius:16px;
+    border-start-start-radius:16px;
+}
+.email-list li:last-child{
+    border-end-start-radius:16px;
+    border-end-end-radius:16px;
+}
+
+.email-list{
+    flex-direction: column;
+    
+}
+

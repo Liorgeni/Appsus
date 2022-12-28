@@ -1,0 +1,6 @@
+/* typography */
+
+@font-face {
+    font-family: roboto;
+    src: url(/apps/mail/assets/fonts/Roboto/Roboto-Regular.ttf);
+}

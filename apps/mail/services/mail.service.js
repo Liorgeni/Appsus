@@ -103,6 +103,30 @@ function _createMails() {
             isRead: false, 
             sentAt : 1551133930596, 
             to: 'momo@momo.com' 
+        },
+        { 
+            id: 'e103', 
+            subject: 'Holiday sale on Billabong', 
+            body: 'come to see the cloths', 
+            isRead: false, 
+            sentAt : 1551133930596, 
+            to: 'momo@momo.com' 
+        },
+        { 
+            id: 'e104', 
+            subject: 'Updates from the university', 
+            body: 'extra time for every exam on 2023', 
+            isRead: false, 
+            sentAt : 1551133930596, 
+            to: 'momo@momo.com' 
+        },
+        { 
+            id: 'e105', 
+            subject: 'Adopt a Cat', 
+            body: 'Animal shalter is ready to give you a new friend', 
+            isRead: false, 
+            sentAt : 1551133930596, 
+            to: 'momo@momo.com' 
         }]
         utilService.saveToStorage(MAIL_KEY, emails)
     }

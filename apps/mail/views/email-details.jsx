@@ -38,7 +38,7 @@ if (!mail) return <div>Loading...</div>
         <p>{mail.body}</p>
         <button onClick={onGoBack}>Go Back</button>
         <hr />
-        <Link to={`/mail/details/${nextMailId}`}>Next car</Link>
+        <Link to={`/mail/details/${nextMailId}`}>Next Email</Link>
 
     </section>
 }
