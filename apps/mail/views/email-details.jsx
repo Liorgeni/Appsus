@@ -5,7 +5,7 @@ import {mailService} from "../services/mail.service.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 
 
-export function EmailDetails() {
+export function EmailDetails({setIsDetailsOpen}) {
     const [mail, setMail] = useState(null)
     const [nextMailId, setNextMailId] = useState(null)
     const { mailId } = useParams()
@@ -29,6 +29,7 @@ console.log('mailIdmailId', mailId);
     }
 
     function onGoBack() {
+        setIsDetailsOpen(false)
         navigate('/mail')
     }
 
@@ -36,7 +37,7 @@ if (!mail) return <div>Loading...</div>
     return <section className="mail-details">
         <h1>{mail.subject}</h1>
         <p>{mail.body}</p>
-        <button onClick={onGoBack}>Go Back</button>
+        {/* <button onClick={onGoBack}>Go Back</button> */}
         <hr />
         <Link to={`/mail/details/${nextMailId}`}>Next Email</Link>
 

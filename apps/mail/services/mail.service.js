@@ -43,7 +43,6 @@ const email = {
 function query() {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            console.log('mailsmails', mails);
             // if (filterBy.txt) {
             //     const regex = new RegExp(filterBy.txt, 'i')
             //     cars = cars.filter(car => regex.test(car.vendor))
@@ -57,7 +56,6 @@ function query() {
 
 
 function get(mailId) {
-    console.log('mailId', mailId);
     return storageService.get(MAIL_KEY, mailId)
     
 }
