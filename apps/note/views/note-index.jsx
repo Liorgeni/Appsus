@@ -5,15 +5,23 @@ import { NoteList } from "../cmps/note-list.jsx";
 import { noteService } from "../services/note.service.js";
 
 export function NoteIndex() {
-  const [notes, setNotes] = useState(noteService.getNotes());
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     loadNotes();
-  }, [notes]);
+  }, []);
 
   function loadNotes() {
-    noteService.getNotes();
-    setNotes(notes);
+    noteService.query().then((notesToUpdate) => {
+      setNotes(notesToUpdate);
+    });
+  }
+
+  function onRemoveNote(noteId) {
+    noteService.remove(noteId).then(() => {
+      const updatedNotes = notes.filter((note) => note.id !== noteId);
+      setNotes(updatedNotes);
+    });
   }
 
   console.log("notes", notes);
@@ -21,7 +29,8 @@ export function NoteIndex() {
   return (
     <section className="note-index">
       <div>
-        <NoteList notes={notes} />
+        <input type="text" placeholder="Add new note" />
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} />
       </div>
       <div></div>
     </section>
