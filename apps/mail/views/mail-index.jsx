@@ -3,7 +3,7 @@ const { useEffect, useState } = React
 
 import { EmailFilter } from "../cmps/email-filter.jsx"
 import { EmailList } from "../cmps/email-list.jsx"
-import {mailServise} from "../services/mail.service.js"
+import {mailService } from "../services/mail.service.js"
 
 
 
@@ -18,7 +18,7 @@ export function MailIndex() {
 
     function loadMails() {
         setIsLoading(true)
-        mailServise.query()
+        mailService.query()
             .then((mails) => {
                 setMailList(mails)
                 setIsLoading(false)
@@ -30,7 +30,9 @@ export function MailIndex() {
     return <section className="mail-index">
     <h1>mail app</h1>  
     <EmailFilter />
-    <EmailList mailList={mailList}/>
+    {!isLoading &&<EmailList mailList={mailList}/>}
+    {isLoading && <div>Loading..</div>}
+    {!mailList.length && <div>No mails to show..</div>}
     <Link to="/mail/compose">Compose</Link> 
     </section>
    

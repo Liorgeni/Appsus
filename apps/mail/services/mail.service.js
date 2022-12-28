@@ -1,6 +1,6 @@
 import {utilService} from "../../../services/util.service.js"
 import {storageService} from "../../../services/async-storage.service.js"
-export const mailServise = {
+export const mailService = {
     get,
     getNextMailId,
     remove,
@@ -57,6 +57,7 @@ function query() {
 
 
 function get(mailId) {
+    console.log('mailId', mailId);
     return storageService.get(MAIL_KEY, mailId)
     
 }
