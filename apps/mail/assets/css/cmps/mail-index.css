@@ -9,6 +9,8 @@
 
 .mail-index-side-nav{
  min-width: 250px;
+ height: 100vh;
+ 
 
 }
 
@@ -20,4 +22,17 @@
     width: 8.5714em;
     height: 3.9285em;
     border: none;
+}
+
+.mail-index-side-nav{
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.mail-index-side-nav span{
+    padding: 5px 0;
+}
+
+.mail-index-side-nav span >* {
+margin-right: 20px;
 }

@@ -1,0 +1,12 @@
+.mail-details{
+    background-color: var(--clr0);
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.mail-details h1{
+    font-size: 1.5714em;
+}
