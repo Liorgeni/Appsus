@@ -48,6 +48,12 @@ function _createNotes() {
           ],
         },
       },
+      {
+        id: "n104",
+        type: "note-video",
+        info: { url: "http://some-img/me", title: "My birthday party" },
+        style: { backgroundColor: "#00d" },
+      },
     ];
   }
   utilService.saveToStorage(NOTE_KEY, notes);

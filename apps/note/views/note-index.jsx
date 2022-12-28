@@ -17,22 +17,23 @@ export function NoteIndex() {
     });
   }
 
-  function onRemoveNote(noteId) {
-    noteService.remove(noteId).then(() => {
-      const updatedNotes = notes.filter((note) => note.id !== noteId);
-      setNotes(updatedNotes);
-    });
-  }
-
   console.log("notes", notes);
 
   return (
     <section className="note-index">
       <div>
         <input type="text" placeholder="Add new note" />
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} />
+        <select>
+          <option value="">Select note type</option>
+          <option>Text</option>
+          <option>To do</option>
+          <option>Image</option>
+          <option>Video</option>
+          <option>Record</option>
+        </select>
+        <NoteList notes={notes} setNotes={setNotes} />
       </div>
-      <div></div>
     </section>
   );
 }
+// onChange={ev => setCmpType(ev.target.value)}
