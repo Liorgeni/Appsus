@@ -3,7 +3,6 @@ import { EmailDetails } from '../views/email-details.jsx'
 
 export function EmailList({ mailList, onSetRead }) {
     function setRead(mail) {
-        console.log(';mail', mail)
         onSetRead(mail)
     }
     function isRead(mail) {
