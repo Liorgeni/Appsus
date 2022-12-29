@@ -4,7 +4,7 @@ import { NoteBar } from "./note-bar.jsx";
 
 export function NotePreview({ note, notes, setNotes }) {
   return (
-    <article key={note.id} className="note-preview">
+    <article key={note.id} className={note.type}>
       <h2>{note.info.title}</h2>
       <p>Type: {note.type}</p>
       <p>{note.info.txt}</p>
@@ -12,3 +12,4 @@ export function NotePreview({ note, notes, setNotes }) {
     </article>
   );
 }
+// "note-preview"

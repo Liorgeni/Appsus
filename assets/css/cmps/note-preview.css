@@ -1,0 +1,34 @@
+.note-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: azure;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
+.note-preview img {
+  height: 175px;
+}
+
+.note-preview p {
+  flex-grow: 1;
+}
+
+.note-txt {
+  background-color: aqua;
+}
+
+.note-img {
+  background-color: bisque;
+}
+
+.note-todos {
+  background-color: orange;
+}
+
+.note-video {
+  background-color: red;
+}

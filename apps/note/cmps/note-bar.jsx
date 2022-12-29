@@ -9,7 +9,7 @@ export function NoteBar({ notes, note, setNotes }) {
   }
 
   return (
-    <ul className="style-container">
+    <ul className="style-container flex space-between clean-list">
       <li
         className="material-symbols-outlined"
         onClick={() => onRemoveNote(note.id)}

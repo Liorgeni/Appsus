@@ -11,15 +11,6 @@
   gap: 30px;
 }
 
-/* .link {
-    color: rgb(255, 153, 10);
-  }
-  
-  .Link :hover {
-    color: rgb(255, 153, 10);
-  } */
-
-/* Add rounded corners to the top left and the top right corner of the image */
 img {
   border-radius: 5px 5px 0 0;
 }
