@@ -9,11 +9,24 @@ _createNotes();
 export const noteService = {
   remove,
   query,
+  getDefaultFilter,
+  save,
 };
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
   return storageService.query(NOTE_KEY).then((notes) => {
-    return Promise.resolve(notes);
+    if (filterBy.txt) {
+      const regex = new RegExp(filterBy.txt, "i");
+      notes = notes.filter((note) =>
+        regex.test(note.info.title && note.info.txt && note.info.label)
+      );
+    }
+    if (filterBy.type) {
+      const regex = new RegExp(filterBy.type, "i");
+      notes = notes.filter((note) => regex.test(note.type));
+      console.log(notes);
+    }
+    return notes;
   });
 }
 
@@ -57,4 +70,24 @@ function _createNotes() {
     ];
   }
   utilService.saveToStorage(NOTE_KEY, notes);
+}
+
+function getDefaultFilter() {
+  return { txt: "", type: "" };
+}
+
+function save(note) {
+  if (note.id) {
+    return storageService.put(NOTE_KEY, note);
+  } else {
+    return storageService.post(NOTE_KEY, note);
+  }
+}
+
+function _saveNotesToStorage(notes) {
+  storageService.saveToStorage(NOTE_KEY, notes);
+}
+
+function _loadNotesFromStorage() {
+  return storageService.loadFromStorage(NOTE_KEY);
 }

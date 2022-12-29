@@ -1,5 +1,7 @@
 import { noteService } from "../services/note.service.js";
 
+import { ColorSelect } from "./note-color.jsx";
+
 export function NoteBar({ notes, note, setNotes }) {
   function onRemoveNote(noteId) {
     noteService.remove(noteId).then(() => {
@@ -8,24 +10,35 @@ export function NoteBar({ notes, note, setNotes }) {
     });
   }
 
+  function onChangeColor() {
+    console.log("change color");
+  }
+
+  function onPinNote(noteId) {
+    console.log("Note pinned");
+  }
+
   return (
-    <ul className="style-container flex space-between clean-list">
+    <ul className="style-container flex clean-list space-between">
+      <span
+        className="material-symbols-outlined pin"
+        onClick={() => onPinNote(note.id)}
+      >
+        push_pin
+      </span>
+
       <li
         className="material-symbols-outlined"
         onClick={() => onRemoveNote(note.id)}
       >
         delete
       </li>
-      <input
-        className="trans"
-        type="color"
-        id="style2"
-        // oninput="onChangeTextColor(this.value)"
-      />
       <li>
-        <label htmlFor="style2">
+        <div className="platte-colors">
           <span className="material-symbols-outlined">palette</span>
-        </label>
+          <ColorSelect onChangeColor={onChangeColor} />
+        </div>
+        <span className="material-symbols-outlined">mail</span>
       </li>
     </ul>
   );

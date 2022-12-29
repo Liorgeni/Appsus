@@ -1,0 +1,27 @@
+.note-color {
+  right: -278%;
+  position: absolute;
+  width: 100px;
+  height: 45px;
+  border: 1px solid white;
+  z-index: 3;
+  top: -25px;
+  background-color: wheat;
+  border-radius: 9px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.platte-colors:hover .note-color {
+  visibility: visible;
+  opacity: 1;
+}
+
+.note-color-item {
+  margin: 5px;
+  border-radius: 999px;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid white;
+}

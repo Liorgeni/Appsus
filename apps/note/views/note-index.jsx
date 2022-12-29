@@ -2,14 +2,18 @@ const { useState, useEffect } = React;
 const { Link } = ReactRouterDOM;
 
 import { NoteList } from "../cmps/note-list.jsx";
+import { NoteAdd } from "../cmps/note-add.jsx";
+import { NoteFilter } from "../cmps/note-filter.jsx";
+
 import { noteService } from "../services/note.service.js";
 
 export function NoteIndex() {
+  const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter());
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     loadNotes();
-  }, []);
+  }, [filterBy]);
 
   function loadNotes() {
     noteService.query().then((notesToUpdate) => {
@@ -17,20 +21,22 @@ export function NoteIndex() {
     });
   }
 
+  function onSetFilter(filterByFromFilter) {
+    setFilterBy(filterByFromFilter);
+  }
+
   console.log("notes", notes);
 
   return (
     <section className="note-index">
       <div>
-        <input type="text" placeholder="Add new note" />
-        <select>
-          <option value="">Select note type</option>
-          <option>Text</option>
-          <option>To do</option>
-          <option>Image</option>
-          <option>Video</option>
-          <option>Record</option>
-        </select>
+        <NoteFilter onSetFilter={onSetFilter} />
+      </div>
+
+      <div>
+        <NoteAdd notes={notes} />
+      </div>
+      <div>
         <NoteList notes={notes} setNotes={setNotes} />
       </div>
     </section>
