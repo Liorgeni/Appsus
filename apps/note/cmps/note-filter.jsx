@@ -40,14 +40,14 @@ export function NoteFilter({ onSetFilter }) {
           onChange={handleChange}
         />
 
-        <label htmlFor="filter-select">Filter:</label>
+        <label htmlFor="filter-select">Or:</label>
         <select
           name="select"
           id="note-type"
           value={filterByToEdit.type}
           onChange={handleChange}
         >
-          <option value="">--By--</option>
+          <option value="">--Select--</option>
           <option value="txt">Text</option>
           <option value="todo">Todo</option>
           <option value="img">Image</option>

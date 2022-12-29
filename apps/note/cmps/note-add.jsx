@@ -22,14 +22,18 @@ export function NoteAdd() {
     });
   }
 
-  //   function checkPlaceholder() {
-
-  //   }
+  function checkPlaceholder() {
+    return "Add....";
+  }
 
   return (
     <section className="note-add">
       <ul className="flex clean-list space-between">
-        <input className="new-note" type="text" placeholder="Add new note" />
+        <input
+          className="new-note"
+          type="text"
+          placeholder={checkPlaceholder()}
+        />
         <li>
           <span className="material-symbols-outlined">text_format</span>
         </li>
