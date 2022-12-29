@@ -9,30 +9,8 @@
 
 .mail-index-side-nav{
  min-width: 250px;
- height: 100vh;
+ /* height: 100vh; */
  
 
 }
 
-.mail-compose-btn{
-    box-shadow: rgba(0, 0, 0, 0) 0px 1px 2px 0px, rgba(0, 0, 0, 0) 0px 1px 3px 1px;
-    border-radius: 16px;
-    background-color: var(--clr2btn);
-    line-height: 2.2857em;
-    width: 8.5714em;
-    height: 3.9285em;
-    border: none;
-}
-
-.mail-index-side-nav{
-    flex-direction: column;
-    padding-left: 20px;
-}
-
-.mail-index-side-nav span{
-    padding: 5px 0;
-}
-
-.mail-index-side-nav span >* {
-margin-right: 20px;
-}

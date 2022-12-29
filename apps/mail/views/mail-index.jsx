@@ -3,24 +3,34 @@ const { useEffect, useState } = React
 
 import { EmailFilter } from '../cmps/email-filter.jsx'
 import { EmailList } from '../cmps/email-list.jsx'
+import { EmailSideNav } from '../cmps/email-side-nav.jsx'
 import { mailService } from '../services/mail.service.js'
 
 export function MailIndex() {
     const [isLoading, setIsLoading] = useState(false)
     const [isDetailsOpen, setIsDetailsOpen] = useState(false)
     const [mailList, setMailList] = useState([])
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+
     const navigate = useNavigate()
 
     useEffect(() => {
         loadMails()
-    }, [])
+    }, [filterBy])
 
     function loadMails() {
         setIsLoading(true)
-        mailService.query().then((mails) => {
-            setMailList(mails)
+        mailService.query(filterBy).then((mailList) => {
+            setMailList(mailList)
             setIsLoading(false)
+        // mailService.query().then((mails) => {
+        //     setMailList(mails)
+        //     setIsLoading(false)
         })
+    }
+
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
     }
 
     function onGoBack() {
@@ -32,26 +42,10 @@ export function MailIndex() {
         <section className='mail-index flex'>
             <section className='mail-index-header'></section>
             <h1>mail app</h1>
-            <EmailFilter />
+            <EmailFilter onSetFilter={onSetFilter}/>
             <section className='mail-index-main flex'>
                 <section className='mail-index-side-nav flex'>
-                    <Link to='/mail/compose'>
-                       
-                        <button className='mail-compose-btn flex align-center'> <span class='material-symbols-outlined'>edit</span> Compose</button>
-                    </Link>
-
-                    <span className='flex align-center'>
-                        <span class='material-symbols-outlined'>inbox</span>Inbox
-                    </span>
-                    <span className='flex align-center'>
-                        <span class='material-symbols-outlined'>delete</span>Trash
-                    </span>
-                    <span className='flex align-center'>
-                        <span class='material-symbols-outlined'>star</span>Starred
-                    </span>
-                    <span className='flex align-center'>
-                        <span class='material-symbols-outlined'>send</span>Sent
-                    </span>
+                <EmailSideNav />                
                 </section>
                 <section className='mail-index-list'>
                     {!isLoading && !isDetailsOpen && <EmailList mailList={mailList} setIsDetailsOpen={setIsDetailsOpen} />}

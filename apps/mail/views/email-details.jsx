@@ -10,7 +10,6 @@ export function EmailDetails({setIsDetailsOpen}) {
     const [nextMailId, setNextMailId] = useState(null)
     const { mailId } = useParams()
     const navigate = useNavigate()
-console.log('mailIdmailId', mailId);
     useEffect(() => {
         loadMail()
     }, [mailId])
