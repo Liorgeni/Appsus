@@ -8,6 +8,13 @@
     /* border-start-start-radius: 16px; */
 }
 
+.email-list li:hover{
+/* background-color: rgb(41, 32, 217);  */
+box-shadow:  inset 0px 0px 3px 0px rgb(85 85 85 / 53%)
+    
+ 
+}
+
 .email-list li:first-child{
     border-start-end-radius:16px;
     border-start-start-radius:16px;
@@ -22,3 +29,15 @@
 }
 
 
+.subject-list{
+    font-weight: bold;
+}
+
+.subject-list.selected{
+    font-weight:normal;
+}
+
+
+.email-list li.selected{
+    background-color: var(--clr2bg);
+}

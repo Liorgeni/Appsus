@@ -28,10 +28,14 @@ export function EmailFilter({ onSetFilter }) {
         onSetFilter(filterByToEdit)
     }
 
+    function onChangeFilterType(filterType){
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, status: filterType }))
+        onSetFilter(filterByToEdit)
+     }
+
     return <section className="filter-mails">
     Filter!
-    <EmailFolderList />
-    
+    <EmailFolderList onChangeFilterType={onChangeFilterType}/>
     <form onSubmit={onSubmitFilter}>
             <label htmlFor="search"></label>
             <input type="text"

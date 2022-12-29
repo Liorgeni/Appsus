@@ -36,13 +36,22 @@ const email = {
 
 function query(filterBy) {
     return storageService.query(MAIL_KEY).then((mails) => {
-        if (filterBy.status === 'inbox') {
-             mails = mails.filter(mail => mail.inbox)         
-        }
-        if (filterBy.status === 'sent') {
-            mails = mails.filter(mail => mail.sent)
+        const type = filterBy.status
+        // if (filterBy.status === 'inbox') {
+             mails = mails.filter(mail => mail[type])         
+        // }
+        // if (filterBy.status === 'sent') {
+        //     mails = mails.filter(mail => mail.sent)
             
-        }
+        // }
+        // if (filterBy.status === 'trash') {
+        //     mails = mails.filter(mail => mail.sent)
+            
+        // }
+        // if (filterBy.status === 'draft') {
+        //     mails = mails.filter(mail => mail.sent)
+            
+        // }
         if (filterBy.txt) {
             const regex = new RegExp(filterBy.txt, 'i')
             mails = mails.filter((mail) => regex.test(mail.subject)) 
@@ -172,6 +181,42 @@ function _createMails() {
                 draft: false,
                 inbox: false,
             },
+            {
+                id: 'e107',
+                subject: 'Guitar lessons2 - master your skills',
+                body: 'unlimited Guitar riffs, learn music theory.',
+                isRead: false,
+                sentAt: 1551133930596,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: true,
+                draft: false,
+                inbox: false,
+            },
+            {
+                id: 'e108',
+                subject: 'Urgent - new bug on the system',
+                body: 'All software testing is conducted with the intention of identifying anomalies and issues that prevent software from working as expected. However, these anomalies are divided into categories to make it easier to plan debugging activities for each.',
+                isRead: false,
+                sentAt: 1551133930596,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: true,
+                draft: false,
+                inbox: false,
+            },
+            {
+                id: 'e109',
+                subject: 'Guitar lessons3 - master your skills',
+                body: 'unlimited Guitar riffs, learn music theory.',
+                isRead: false,
+                sentAt: 1551133930596,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: false,
+                draft: true,
+                inbox: false,
+            }
         ]
 
         utilService.saveToStorage(MAIL_KEY, emails)

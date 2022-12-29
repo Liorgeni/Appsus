@@ -3,6 +3,7 @@ const { useEffect, useState } = React
 
 import { EmailFilter } from '../cmps/email-filter.jsx'
 import { EmailList } from '../cmps/email-list.jsx'
+import { EmailOptions } from '../cmps/email-options.jsx'
 import { EmailSideNav } from '../cmps/email-side-nav.jsx'
 import { mailService } from '../services/mail.service.js'
 
@@ -16,7 +17,7 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-    }, [filterBy])
+    }, [filterBy,isDetailsOpen])
 
     function loadMails() {
         setIsLoading(true)
@@ -29,6 +30,15 @@ export function MailIndex() {
         })
     }
 
+    function onSetRead(mail){
+        setIsDetailsOpen(true)
+        mailService.save(mail)  
+    }
+    function onSetUnread(mail){
+        setIsDetailsOpen(false)
+        mailService.save(mail)  
+    }
+
     function onSetFilter(filterBy) {
         setFilterBy(filterBy)
     }
@@ -38,6 +48,10 @@ export function MailIndex() {
         navigate('/mail')
     }
 
+    function onChangeFilterType(filterType){
+        onSetFilter((prevFilter) => ({ ...prevFilter, status: filterType }))
+     }
+
     return (
         <section className='mail-index flex'>
             <section className='mail-index-header'></section>
@@ -45,10 +59,11 @@ export function MailIndex() {
             <EmailFilter onSetFilter={onSetFilter}/>
             <section className='mail-index-main flex'>
                 <section className='mail-index-side-nav flex'>
-                <EmailSideNav />                
+                <EmailSideNav onChangeFilterType={onChangeFilterType}/>                
                 </section>
                 <section className='mail-index-list'>
-                    {!isLoading && !isDetailsOpen && <EmailList mailList={mailList} setIsDetailsOpen={setIsDetailsOpen} />}
+                    {!isLoading && !isDetailsOpen && <EmailList mailList={mailList} onSetRead={onSetRead} />}
+                    {!isLoading && isDetailsOpen && <EmailOptions onSetUnread={onSetUnread}/>}
                     {!isLoading && isDetailsOpen && <Outlet />}
                     {isDetailsOpen && <button onClick={onGoBack}>Go Back</button>}
                     {isLoading && <div>Loading..</div>}
