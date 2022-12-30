@@ -1,8 +1,9 @@
 .email-list li{
+    
     box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
     background-color: var(--clr0);
     height: 2.8571em;
-    width: 80vw;
+    /* width: 80vw; */
     padding-left: 20px;
     
     /* border-start-start-radius: 16px; */
@@ -12,20 +13,21 @@
 /* background-color: rgb(41, 32, 217);  */
 box-shadow:  inset 0px 0px 3px 0px rgb(85 85 85 / 53%)
     
- 
 }
 
-.email-list li:first-child{
+.email-list .link-list:first-child li{
     border-start-end-radius:16px;
     border-start-start-radius:16px;
 }
-.email-list li:last-child{
+.email-list .link-list:last-child li{
     border-end-start-radius:16px;
     border-end-end-radius:16px;
 }
 
 .email-list{
     flex-direction: column;
+    margin-right: 20px;
+    
 }
 
 
@@ -41,3 +43,6 @@ box-shadow:  inset 0px 0px 3px 0px rgb(85 85 85 / 53%)
 .email-list li.selected{
     background-color: var(--clr2bg);
 }
+
+
+

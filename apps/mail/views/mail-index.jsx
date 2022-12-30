@@ -12,32 +12,39 @@ export function MailIndex() {
     const [isDetailsOpen, setIsDetailsOpen] = useState(false)
     const [mailList, setMailList] = useState([])
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+    const [folderSelect, setFolderSelect] = useState('inbox')
 
     const navigate = useNavigate()
 
     useEffect(() => {
         loadMails()
-    }, [filterBy,isDetailsOpen])
+    }, [filterBy, isDetailsOpen])
 
     function loadMails() {
         setIsLoading(true)
         mailService.query(filterBy).then((mailList) => {
             setMailList(mailList)
             setIsLoading(false)
-        // mailService.query().then((mails) => {
-        //     setMailList(mails)
-        //     setIsLoading(false)
+            // mailService.query().then((mails) => {
+            //     setMailList(mails)
+            //     setIsLoading(false)
         })
     }
 
-    function onSetRead(mail){
+    function onSetRead(mail) {
+        mailService.save(mail)
         setIsDetailsOpen(true)
-        mailService.save(mail)  
     }
-    function onSetUnread(mail){
-        setIsDetailsOpen(false)
-        mailService.save(mail)  
-    }
+    function onSetUnread(mailId) {
+        mailService.get(mailId).then((mail)=>{
+            const readMail = { ...mail, isRead: false }
+            mailService.save(readMail)
+            setIsDetailsOpen(false)
+           
+            
+            // navigate('/mail')
+    })
+}
 
     function onSetFilter(filterBy) {
         setFilterBy(filterBy)
@@ -48,22 +55,24 @@ export function MailIndex() {
         navigate('/mail')
     }
 
-    function onChangeFilterType(filterType){
+    function onChangeFilterType(filterType) {
         onSetFilter((prevFilter) => ({ ...prevFilter, status: filterType }))
-     }
+    }
 
     return (
         <section className='mail-index flex'>
             <section className='mail-index-header'></section>
-            <h1>mail app</h1>
-            <EmailFilter onSetFilter={onSetFilter}/>
+            <div className='logo'>
+                <h1>Mail app</h1>
+            </div>
+            <EmailFilter onSetFilter={onSetFilter} />
             <section className='mail-index-main flex'>
                 <section className='mail-index-side-nav flex'>
-                <EmailSideNav onChangeFilterType={onChangeFilterType}/>                
+                    <EmailSideNav onChangeFilterType={onChangeFilterType} />
                 </section>
                 <section className='mail-index-list'>
                     {!isLoading && !isDetailsOpen && <EmailList mailList={mailList} onSetRead={onSetRead} />}
-                    {!isLoading && isDetailsOpen && <EmailOptions onSetUnread={onSetUnread}/>}
+                    {!isLoading && isDetailsOpen && <EmailOptions onSetUnread={onSetUnread} />}
                     {!isLoading && isDetailsOpen && <Outlet />}
                     {isDetailsOpen && <button onClick={onGoBack}>Go Back</button>}
                     {isLoading && <div>Loading..</div>}
