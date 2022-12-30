@@ -4,18 +4,43 @@ import { NoteImage } from "./note-image/note-image.jsx";
 import { NoteVideo } from "./note-video/note-video.jsx";
 import { NoteText } from "./note-text/note-text.jsx";
 import { NoteRecord } from "./note-record/note-record.jsx";
+import { NoteToDo } from "./note-todo/note-todo.jsx";
 
-export function NotePreview({ note, notes, setNotes }) {
+import { NoteType } from "../global.vars.js";
+
+export function NotePreview({ note, notes, setNotes, onChangeColor }) {
+  console.log("note", note);
+
+  function getNote(noteType) {
+    console.log("oooooo", noteType);
+    switch (noteType) {
+      case NoteType.text:
+        console.log("bbbbb");
+        return <NoteText note={note} />;
+      case NoteType.todo:
+        return <NoteToDo note={note} />;
+      case NoteType.image:
+        return <NoteImage note={note} />;
+      case NoteType.video:
+        return <NoteVideo note={note} />;
+      case NoteType.recording:
+        return <NoteRecord note={note} />;
+    }
+  }
+
   return (
-    <article key={note.id} className={`${note.type} note-preview`}>
-      <h2>{note.info.title}</h2>
-      <p>Type: {note.type}</p>
-      <p>{note.info.txt}</p>
-      <NoteBar note={note} notes={notes} setNotes={setNotes} />
-      <NoteImage />
-      <NoteVideo />
-      <NoteText />
-      <NoteRecord />
+    <article
+      key={note.id}
+      className={`${note.type} note-preview`}
+      style={{ backgroundColor: note.style.backgroundColor }}
+    >
+      {getNote(note.type)}
+      <NoteBar
+        note={note}
+        notes={notes}
+        setNotes={setNotes}
+        onChangeColor={onChangeColor}
+      />
     </article>
   );
 }

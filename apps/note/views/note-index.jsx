@@ -25,6 +25,21 @@ export function NoteIndex() {
     setFilterBy(filterByFromFilter);
   }
 
+  function onAddNewNote(noteType, data) {
+    noteService.addNewNote(noteType, data).then(() => {
+      console.log("ok");
+      loadNotes();
+    });
+  }
+
+  function onChangeColor(note, color) {
+    console.log("1");
+    noteService.changeColor(note, color).then(() => {
+      console.log("2");
+      loadNotes();
+    });
+  }
+
   console.log("notes", notes);
 
   return (
@@ -34,10 +49,14 @@ export function NoteIndex() {
       </div>
 
       <div>
-        <NoteAdd notes={notes} />
+        <NoteAdd onAddNewNote={onAddNewNote} />
       </div>
       <div>
-        <NoteList notes={notes} setNotes={setNotes} />
+        <NoteList
+          notes={notes}
+          setNotes={setNotes}
+          onChangeColor={onChangeColor}
+        />
       </div>
     </section>
   );

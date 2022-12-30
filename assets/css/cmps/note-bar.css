@@ -14,7 +14,8 @@
   position: relative;
 }
 
-.material-symbols-outlined:hover {
+.material-symbols-outlined:hover,
+.material-symbols-outlined-active {
   /* background-color: aquamarine; */
   border-radius: 20px;
   background-color: rgb(238, 236, 236);

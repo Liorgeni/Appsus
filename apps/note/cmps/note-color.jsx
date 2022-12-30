@@ -1,8 +1,4 @@
-const { useState, useRef } = React;
-
-export function ColorSelect(noteId) {
-  const [backgroundColor, setBackgroundColor] = useState([]);
-
+export function ColorSelect({ changeColor }) {
   const colors = [
     "#FFFF",
     "#F6FE88",
@@ -14,9 +10,8 @@ export function ColorSelect(noteId) {
     "#FAC980",
   ];
 
-  function onChangeColor(noteId, color) {
-    console.log("change color");
-    console.log(noteId, color);
+  function onChangeColor(color) {
+    changeColor(color);
   }
 
   return (
@@ -26,9 +21,8 @@ export function ColorSelect(noteId) {
           <div
             className="note-color-item "
             key={color}
-            id={color}
             style={{ backgroundColor: color }}
-            onClick={() => onChangeColor(noteId, color)}
+            onClick={() => onChangeColor(color)}
           ></div>
 
           //  <div className="note-color">

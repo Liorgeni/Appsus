@@ -2,6 +2,7 @@ console.log("Hi");
 
 import { storageService } from "../../../services/async-storage.service.js";
 import { utilService } from "../../../services/util.service.js";
+import { NoteType } from "../global.vars.js";
 
 const NOTE_KEY = "noteDB";
 _createNotes();
@@ -11,6 +12,8 @@ export const noteService = {
   query,
   getDefaultFilter,
   save,
+  addNewNote,
+  changeColor,
 };
 
 function query(filterBy = getDefaultFilter()) {
@@ -39,20 +42,22 @@ function _createNotes() {
     notes = [
       {
         id: "n101",
-        type: "note-txt",
-        style: { backgroundColor: "#00d" },
+        type: NoteType.text,
+        style: { backgroundColor: "#fff" },
         isPinned: true,
         info: { txt: "Fullstack Me Baby!" },
       },
       {
         id: "n102",
-        type: "note-img",
+        type: NoteType.image,
         style: { backgroundColor: "#00d" },
-        info: { url: "http://some-img/me", title: "Bobi and Me" },
+        info: {
+          url: "https://static.wixstatic.com/media/ac878b_c08a33f1105d4350b282a07a5867f969~mv2.jpg/v1/fit/w_1000%2Ch_1000%2Cal_c%2Cq_80/file.jpg",
+        },
       },
       {
         id: "n103",
-        type: "note-todos",
+        type: NoteType.todo,
         style: { backgroundColor: "#00d" },
         info: {
           label: "Get my stuff together",
@@ -64,8 +69,10 @@ function _createNotes() {
       },
       {
         id: "n104",
-        type: "note-video",
-        info: { url: "http://some-img/me", title: "My birthday party" },
+        type: NoteType.video,
+        info: {
+          url: "https://www.youtube.com/watch?v=SI8TN0EPmAw",
+        },
         style: { backgroundColor: "#00d" },
       },
     ];
@@ -91,4 +98,38 @@ function _saveNotesToStorage(notes) {
 
 function _loadNotesFromStorage() {
   return storageService.loadFromStorage(NOTE_KEY);
+}
+
+function changeColor(note, color) {
+  note.style.backgroundColor = color;
+  return save(note);
+}
+
+function addNewNote(noteType, data) {
+  const newNote = {
+    type: noteType,
+    style: { backgroundColor: "#fff" },
+    isPinned: false,
+  };
+  switch (noteType) {
+    case NoteType.text:
+      newNote.info = { txt: data };
+      break;
+    case NoteType.todo:
+      newNote.info = { lable: data, todos: [] };
+      break;
+    case NoteType.image:
+      newNote.info = { url: data };
+
+      break;
+    case NoteType.video:
+      newNote.info = { url: data };
+      break;
+    case NoteType.recording:
+      newNote.info = { url: data };
+      break;
+    default:
+  }
+
+  return save(newNote);
 }

@@ -2,7 +2,7 @@ import { noteService } from "../services/note.service.js";
 
 import { ColorSelect } from "./note-color.jsx";
 
-export function NoteBar({ note, notes, setNotes }) {
+export function NoteBar({ note, notes, setNotes, onChangeColor }) {
   function onRemoveNote(noteId) {
     noteService.remove(noteId).then(() => {
       const updatedNotes = notes.filter((note) => note.id !== noteId);
@@ -10,12 +10,12 @@ export function NoteBar({ note, notes, setNotes }) {
     });
   }
 
-  function onChangeColor() {
-    console.log("change color");
-  }
-
   function onPinNote(noteId) {
     console.log("Note pinned", noteId);
+  }
+
+  function changeColor(color) {
+    onChangeColor(note, color);
   }
 
   return (
@@ -37,7 +37,7 @@ export function NoteBar({ note, notes, setNotes }) {
         <li>
           <div className="platte-colors wrap flex justify-center">
             <span className="material-symbols-outlined bar">palette</span>
-            <ColorSelect onChangeColor={onChangeColor} noteId={note.id} />
+            <ColorSelect changeColor={changeColor} />
           </div>
         </li>
         <li>
