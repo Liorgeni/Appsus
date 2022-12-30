@@ -14,7 +14,7 @@ export function NoteFilter({ onSetFilter }) {
   function handleChange({ target }) {
     console.log("target", target);
     let { value, name: field, type } = target;
-    value = type === "number" ? +value : value;
+    // value = type === "number" ? +value : value;
     setFilterByToEdit((prevFilter) => {
       return { ...prevFilter, [field]: value };
     });
@@ -28,7 +28,6 @@ export function NoteFilter({ onSetFilter }) {
 
   return (
     <section className="note-filter">
-      <h2>notes filter:</h2>
       <form onSubmit={onSubmitFilter}>
         <label htmlFor="noteTitle"></label>
         <input
@@ -40,10 +39,12 @@ export function NoteFilter({ onSetFilter }) {
           onChange={handleChange}
         />
 
-        <label htmlFor="filter-select">Or:</label>
+        <label className="or" htmlFor="filter-select">
+          Or:
+        </label>
         <select
-          name="select"
-          id="note-type"
+          name="type"
+          id="filter-select"
           value={filterByToEdit.type}
           onChange={handleChange}
         >
@@ -55,7 +56,7 @@ export function NoteFilter({ onSetFilter }) {
           <option value="record">Voice records</option>
         </select>
 
-        <button>Filter</button>
+        {/* <button>Filter</button> */}
       </form>
     </section>
   );

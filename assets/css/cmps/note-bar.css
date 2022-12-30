@@ -1,3 +1,26 @@
 .material-symbols-outlined {
   cursor: pointer;
 }
+
+.note-bar-container {
+  /* margin: 10px;
+  padding: 10px; */
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.note-bar-container:hover {
+  /* background-color: rgb(238, 236, 236); */
+  border-radius: 20px;
+  position: relative;
+}
+
+.material-symbols-outlined:hover {
+  /* background-color: aquamarine; */
+  border-radius: 20px;
+  background-color: rgb(238, 236, 236);
+}
+
+.bar {
+  margin: 10px;
+  padding: 10px;
+}

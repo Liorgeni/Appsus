@@ -16,7 +16,7 @@ export function NoteIndex() {
   }, [filterBy]);
 
   function loadNotes() {
-    noteService.query().then((notesToUpdate) => {
+    noteService.query(filterBy).then((notesToUpdate) => {
       setNotes(notesToUpdate);
     });
   }

@@ -1,4 +1,17 @@
+.note-filter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 40px;
+  gap: 30px;
+  background-color: rgb(249, 244, 238);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.or {
+  font-size: 22px;
+}
 select {
+  cursor: pointer;
   padding: 6px;
   border: none;
   margin-top: 8px;
@@ -10,10 +23,29 @@ select {
 input {
   float: left;
   padding: 6px;
-  border: none;
   margin-top: 8px;
   margin-right: 16px;
   font-size: 17px;
   border: 1px solid rgb(255, 153, 10);
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
+
+/* button {
+  cursor: pointer;
+  margin-top: 8px;
+  margin-right: 16px;
+  text-align: center;
+  color: rgb(255, 153, 10);
+  font-size: 1.2rem;
+  border: 1px solid rgb(255, 153, 10);
+  padding: 4px 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+button:hover {
+  background-color: rgb(255, 153, 10);
+  color: rgb(252, 247, 241);
+  transition: 0.5s;
+  border: 1px solid rgb(255, 153, 10);
+} */

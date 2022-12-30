@@ -16,10 +16,9 @@ export const noteService = {
 function query(filterBy = getDefaultFilter()) {
   return storageService.query(NOTE_KEY).then((notes) => {
     if (filterBy.txt) {
+      console.log("filterBy", filterBy);
       const regex = new RegExp(filterBy.txt, "i");
-      notes = notes.filter((note) =>
-        regex.test(note.info.title && note.info.txt && note.info.label)
-      );
+      notes = notes.filter((note) => regex.test(note.info.title));
     }
     if (filterBy.type) {
       const regex = new RegExp(filterBy.type, "i");
@@ -41,18 +40,20 @@ function _createNotes() {
       {
         id: "n101",
         type: "note-txt",
+        style: { backgroundColor: "#00d" },
         isPinned: true,
         info: { txt: "Fullstack Me Baby!" },
       },
       {
         id: "n102",
         type: "note-img",
-        info: { url: "http://some-img/me", title: "Bobi and Me" },
         style: { backgroundColor: "#00d" },
+        info: { url: "http://some-img/me", title: "Bobi and Me" },
       },
       {
         id: "n103",
         type: "note-todos",
+        style: { backgroundColor: "#00d" },
         info: {
           label: "Get my stuff together",
           todos: [

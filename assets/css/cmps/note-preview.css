@@ -1,12 +1,12 @@
 .note-preview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: rgb(0, 0, 0);
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  cursor: pointer;
 }
 
 .note-preview img {
@@ -15,4 +15,8 @@
 
 .note-preview p {
   flex-grow: 1;
+}
+
+.note-preview:hover {
+  box-shadow: 0 2px 6px 8px rgba(0, 0, 0, 0.2);
 }
