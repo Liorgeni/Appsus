@@ -1,0 +1,19 @@
+
+
+.search-box{
+    width: 20.71em;
+    height: 1.571em;
+    border-radius: 16px;
+    border-style: none;
+    margin:0 auto;
+    background-color: var(--clr1);
+    margin: 10px 0;
+}
+
+.search-btn{
+    border-style: none;
+    background-color: var(--clr1);
+    padding: 3px;
+    border-radius: 16px;
+
+}

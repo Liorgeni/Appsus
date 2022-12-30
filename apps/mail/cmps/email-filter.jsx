@@ -33,9 +33,9 @@ export function EmailFilter({ onSetFilter }) {
         onSetFilter(filterByToEdit)
      }
 
-    return <section className="filter-mails">
-    Filter!
+    return <section className="filter-mails flex justify-center align-center">
     <EmailFolderList onChangeFilterType={onChangeFilterType}/>
+    <button className="search-btn"><span class="material-symbols-outlined">search</span></button>
     <form onSubmit={onSubmitFilter}>
             <label htmlFor="search"></label>
             <input type="text"
@@ -44,6 +44,7 @@ export function EmailFilter({ onSetFilter }) {
                 placeholder="Search mail"
                 value={filterByToEdit.txt}
                 onChange={handleChange}
+                className='search-box'
                 // ref={elInputRef}
             />
 
@@ -56,7 +57,7 @@ export function EmailFilter({ onSetFilter }) {
                 onChange={handleChange}
             /> */}
 
-            <button><span class="material-symbols-outlined">search</span></button>
+            
         </form>
 
     </section>

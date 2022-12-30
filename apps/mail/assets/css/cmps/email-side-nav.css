@@ -5,18 +5,37 @@
     border-radius: 16px;
     background-color: var(--clr2btn);
     line-height: 2.2857em;
-    width: 8.5714em;
+    /* width: 8.5714em; */
     height: 3.9285em;
     border: none;
+    cursor: pointer;
+    margin: 0 0 20px 20px;
+    /* flex-basis: 20%; */
+   
+    
 }
+
+.mail-compose-btn:hover{
+    /* background-color: rgb(41, 32, 217);  */
+    box-shadow:  inset 0px 0px 3px 0px rgb(85 85 85 / 53%)
+        
+    }
 
 .mail-index-side-nav{
     flex-direction: column;
-    padding-left: 20px;
+   margin-right: 20px;
 }
 
 .mail-index-side-nav span{
-    padding: 5px 0;
+    padding: 5px 10px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+
+}
+
+.mail-index-side-nav span:hover{
+   background-color: var(--gray1);
+
 }
 
 .mail-index-side-nav span >* {
@@ -25,4 +44,10 @@ margin-right: 20px;
 
 .side-nav-btn{
     cursor: pointer;
+}
+
+.mail-index-side-nav span.selected{
+    background-color: var(--clr5);
+    color: var(--clr1btn);
+    font-weight: 700;
 }

@@ -1,0 +1,22 @@
+.email-compose{
+    flex-direction: column;
+    background-color: var(--clr1bg);
+    
+}
+
+.email-compose form{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    
+}
+
+.email-compose input{
+    border-style: none;
+    border-radius: 16px;
+    width: 488px;
+}
+
+.email-compose hr{
+    width: 500px;
+}

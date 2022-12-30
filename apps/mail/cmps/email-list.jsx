@@ -15,15 +15,23 @@ export function EmailList({ mailList, onSetRead }) {
             {mailList.map((mail) => {
                 const readMail = { ...mail, isRead: true }
                 return (
-                    <li className={`flex align-center ${isRead(mail)}`} key={mail.id}>
-                        <Link onClick={() => setRead(readMail)} to={`/mail/details/${mail.id}`}>
+                    <Link key={mail.id} className='link-list' onClick={() => setRead(readMail)} to={`/mail/details/${mail.id}`}>
+                        <li className={`flex align-center ${isRead(mail)}`} >
                             <span className={`subject-list ${isRead(mail)}`}>{mail.subject}</span> - {mail.body.substring(0, 50)}
-                        </Link>
-                    </li>
+                        </li>
+                    </Link>
                 )
             })}
         </ul>
     )
 
     // <ul><li><EmailDetails /></li></ul>
+}
+
+{
+    /* <li  className={`flex align-center ${isRead(mail)}`} key={mail.id}>
+                        <Link onClick={() => setRead(readMail)} to={`/mail/details/${mail.id}`}>
+                            <span className={`subject-list ${isRead(mail)}`}>{mail.subject}</span> - {mail.body.substring(0, 50)}
+                        </Link>
+                    </li> */
 }
