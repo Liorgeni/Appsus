@@ -4,9 +4,6 @@ const { useEffect, useState } = React
 export function EmailSideNav({ onChangeFilterType, unreadCounter }) {
     const [select, setSelect] = useState({ inbox: true, draft: false, trash: false, starred: false, sent: false })
 
-    //     useEffect(()=>{
-    //         onChangeFilterType(folder)
-    // },[select])
 
     function setSelectedFolder(folder) {
         setSelect((prev) => {

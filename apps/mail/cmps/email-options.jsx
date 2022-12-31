@@ -3,20 +3,10 @@ import { mailService } from "../services/mail.service.js"
 
 
 export function EmailOptions({onChangeFolder}) {
-    // const [mail, setMail] = useState(null)
     const navigate = useNavigate()
     const { mailId } = useParams()
 
-    // function loadMail() {
-        // mailService.get(mailId)
-        //     .then((mail) => setMail(mail))
-        //     .catch((err) => {
-        //         console.log('Had issues in mail details', err)
-        //         showErrorMsg('Cannot load mail')
-        //         navigate('/mail')
-        //     })
-        // }
-    // const readMail = { ...mail, isRead: true }
+
     function setUnread(mailId){    
         const changeOption = {isRead: false}
         onChangeFolder(mailId, changeOption)         

@@ -38,7 +38,6 @@ const email = {
 function query(filterBy) {
     return storageService.query(MAIL_KEY).then((mails) => {
         const type = filterBy.status
-        // if (filterBy.status === 'inbox') {
             if(type === 'unread'){
                 mails = mails.filter(mail => !mail.isRead)
             } else if(type === 'read') {
@@ -46,26 +45,10 @@ function query(filterBy) {
             } else{
                 mails = mails.filter(mail => mail[type])         
             }
-        // }
-        // if (filterBy.status === 'sent') {
-        //     mails = mails.filter(mail => mail.sent)
-            
-        // }
-        // if (filterBy.status === 'trash') {
-        //     mails = mails.filter(mail => mail.sent)
-            
-        // }
-        // if (filterBy.status === 'draft') {
-        //     mails = mails.filter(mail => mail.sent)
-            
-        // }
         if (filterBy.txt) {
             const regex = new RegExp(filterBy.txt, 'i')
             mails = mails.filter((mail) => regex.test(mail.subject)) 
         }
-        // if (filterBy.minSpeed) {
-        //     cars = cars.filter(car => car.maxSpeed >= filterBy.minSpeed)
-
         return mails
     })
 }
@@ -192,14 +175,14 @@ function _createMails() {
                 id: 'e106',
                 subject: 'Guitar lessons - master your skills',
                 body: 'unlimited Guitar riffs, learn music theory.',
-                isRead: false,
+                isRead: true,
                 sentAt: 1551133930596,
                 to: 'momo@momo.com',
                 sent: true,
                 trash: false,
                 draft: false,
                 inbox: false,
-                starred: false,
+                starred: true,
             },
             {
                 id: 'e107',
@@ -231,13 +214,104 @@ function _createMails() {
                 id: 'e109',
                 subject: 'Guitar lessons3 - master your skills',
                 body: 'unlimited Guitar riffs, learn music theory.',
+                isRead: true,
+                sentAt: 1551133930596,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: true,
+                draft: false,
+                inbox: false,
+                starred: false,
+            },
+            {
+                id: 'e110',
+                subject: 'Guitar lessons4 - master your skills',
+                body: 'unlimited Guitar riffs, learn music theory.',
                 isRead: false,
                 sentAt: 1551133930596,
                 to: 'momo@momo.com',
                 sent: false,
                 trash: false,
-                draft: true,
+                draft: false,
+                inbox: true,
+                starred: false,
+            },
+            {
+                id: 'e111',
+                subject: 'Guitar lessons3 - master your skills',
+                body: 'unlimited Guitar riffs, learn music theory.',
+                isRead: false,
+                sentAt: 1551133930596,
+                to: 'momo@momo.com',
+                sent: true,
+                trash: false,
+                draft: false,
                 inbox: false,
+                starred: false,
+            },
+            {
+                id: 'e111',
+                subject: 'UP TO 70% OFF END OF YEAR SALE',
+                body: 'SHOP OUR INSTA Get your fave looks from our feed',
+                isRead: false,
+                sentAt: 1551133930457,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: false,
+                draft: false,
+                inbox: true,
+                starred: false,
+            },
+            {
+                id: 'e112',
+                subject: 'your latest PlayStation Plus update is here',
+                body: 'Latest Game Catalogue update! We\`ve just added some fantastic titles to the Game Catalogue that you don\`t want to miss. Check out what\`s new below and upgrade your membership to PlayStation®Plus Extra or PlayStation Plus Deluxe to play today.',
+                isRead: false,
+                sentAt: 1551133930457,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: false,
+                draft: false,
+                inbox: true,
+                starred: false,
+            },
+            {
+                id: 'e113',
+                subject: 'Black Friday deals are coming to an end',
+                body: 'Loads of discounts are still live, but you better be quick – you only have until 23:59 GMT',
+                isRead: true,
+                sentAt: 1551133930457,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: false,
+                draft: false,
+                inbox: true,
+                starred: false,
+            },
+            {
+                id: 'e114',
+                subject: 'You have 1 new message',
+                body: 'Never miss an update with the LinkedIn app',
+                isRead: true,
+                sentAt: 1551133930457,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: false,
+                draft: false,
+                inbox: true,
+                starred: false,
+            },
+            {
+                id: 'e115',
+                subject: 'Account confirmation: Your Google Cloud free trial',
+                body: 'Welcome to Google Cloud. Learn the fundamentals with this tutorial and see what else you can do for free on Google Cloud with our Always Free tier.',
+                isRead: false,
+                sentAt: 1551133930457,
+                to: 'momo@momo.com',
+                sent: false,
+                trash: false,
+                draft: false,
+                inbox: true,
                 starred: false,
             }
         ]

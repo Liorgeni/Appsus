@@ -25,13 +25,7 @@ export function EmailList({ mailList, onSetRead }) {
         </ul>
     )
 
-    // <ul><li><EmailDetails /></li></ul>
+
 }
 
-{
-    /* <li  className={`flex align-center ${isRead(mail)}`} key={mail.id}>
-                        <Link onClick={() => setRead(readMail)} to={`/mail/details/${mail.id}`}>
-                            <span className={`subject-list ${isRead(mail)}`}>{mail.subject}</span> - {mail.body.substring(0, 50)}
-                        </Link>
-                    </li> */
-}
+
