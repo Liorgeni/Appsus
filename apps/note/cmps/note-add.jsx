@@ -8,8 +8,6 @@ export function NoteAdd({ onAddNewNote }) {
   useEffect(() => {}, []);
 
   function onAddNote() {
-    console.log("noteType", noteType);
-    console.log("noteData", noteData);
     onAddNewNote(noteType, noteData);
   }
 
@@ -18,7 +16,7 @@ export function NoteAdd({ onAddNewNote }) {
       case NoteType.text:
         return "Add new text note...";
       case NoteType.todo:
-        return "Add your first todo...";
+        return "Add your todo list title...";
       case NoteType.image:
         return "Add image URL...";
       case NoteType.video:
@@ -27,8 +25,6 @@ export function NoteAdd({ onAddNewNote }) {
         return "Enter city name...";
     }
   }
-
-  console.log("NOTE_TYPE.text", NoteType);
 
   return (
     <section className="note-add">

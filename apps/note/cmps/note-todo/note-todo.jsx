@@ -3,17 +3,19 @@ export function NoteToDo({ note }) {
   //     this.props.onToggleDoneTodo(this.props.note.id,event.target.id)
   //     event.preventDefault();
   // }
-  console.log(note, "lklklklkl");
+
+  console.log("note", note);
+
   return (
-    <ul>
-      {note.info.todos.map((todo) => {
+    <ul className="innerNote">
+      <h1>{note.info.lable}</h1>
+
+      {note.info.todos.map((todo, i) => {
         console.log("todo", todo);
         const isDone = todo.isDone ? "done" : "";
         return (
-          <li className="todo-item ">
-            <p className={isDone} id={note.id}>
-              {todo.txt}
-            </p>
+          <li className="todo-item " key={i}>
+            <p className={isDone}>{todo.txt}</p>
           </li>
         );
       })}

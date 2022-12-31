@@ -1,4 +1,5 @@
 import { NoteBar } from "./note-bar.jsx";
+const { Link } = ReactRouterDOM;
 
 import { NoteImage } from "./note-image/note-image.jsx";
 import { NoteVideo } from "./note-video/note-video.jsx";
@@ -16,7 +17,6 @@ export function NotePreview({
   onToggleIsPinned,
 }) {
   function getNote(noteType) {
-    console.log("oooooo", noteType);
     switch (noteType) {
       case NoteType.text:
         return <NoteText note={note} />;
@@ -38,6 +38,8 @@ export function NotePreview({
       style={{ backgroundColor: note.style.backgroundColor }}
     >
       {getNote(note.type)}
+      <Link to={`/note/${note.id}`}>Edit note</Link>
+
       <NoteBar
         note={note}
         notes={notes}

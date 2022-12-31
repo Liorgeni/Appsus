@@ -1,5 +1,3 @@
-const { Link } = ReactRouterDOM;
-
 import { NotePreview } from "./note-preview.jsx";
 
 export function NoteList({ notes, setNotes, onChangeColor, onToggleIsPinned }) {
@@ -8,7 +6,6 @@ export function NoteList({ notes, setNotes, onChangeColor, onToggleIsPinned }) {
       <h1 style={{ margin: "10px" }}>Pinned</h1>
       <section className="note-list grid-container">
         {notes.map((note) => {
-          console.log("ttttttt", note);
           return note.isPinned ? (
             <article key={note.id}>
               <NotePreview
@@ -28,7 +25,6 @@ export function NoteList({ notes, setNotes, onChangeColor, onToggleIsPinned }) {
 
       <section className="note-list grid-container">
         {notes.map((note) => {
-          console.log("ttttttt", note);
           return !note.isPinned ? (
             <article key={note.id}>
               <NotePreview

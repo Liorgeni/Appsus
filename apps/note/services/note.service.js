@@ -1,5 +1,3 @@
-console.log("Hi");
-
 import { storageService } from "../../../services/async-storage.service.js";
 import { utilService } from "../../../services/util.service.js";
 import { NoteType } from "../global.vars.js";
@@ -15,19 +13,18 @@ export const noteService = {
   addNewNote,
   changeColor,
   toggleIsPinned,
+  get,
 };
 
 function query(filterBy = getDefaultFilter()) {
   return storageService.query(NOTE_KEY).then((notes) => {
     if (filterBy.txt) {
-      console.log("filterBy", filterBy);
       const regex = new RegExp(filterBy.txt, "i");
       notes = notes.filter((note) => regex.test(note.info.title));
     }
     if (filterBy.type) {
       const regex = new RegExp(filterBy.type, "i");
       notes = notes.filter((note) => regex.test(note.type));
-      console.log(notes);
     }
     return notes;
   });
@@ -104,6 +101,10 @@ function _loadNotesFromStorage() {
   return storageService.loadFromStorage(NOTE_KEY);
 }
 
+function get(noteId) {
+  return storageService.get(NOTE_KEY, noteId);
+}
+
 function changeColor(note, color) {
   note.style.backgroundColor = color;
   return save(note);
@@ -125,7 +126,10 @@ function addNewNote(noteType, data) {
       newNote.info = { txt: data };
       break;
     case NoteType.todo:
-      newNote.info = { lable: data, todos: [txt, doneAt, isDone] };
+      newNote.info = {
+        lable: data,
+        todos: [{ txt: data, doneAt: null, isDone: false }],
+      };
       break;
     case NoteType.image:
       newNote.info = { url: data };

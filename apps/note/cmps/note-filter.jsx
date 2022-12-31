@@ -12,9 +12,7 @@ export function NoteFilter({ onSetFilter }) {
   }, [filterByToEdit]);
 
   function handleChange({ target }) {
-    console.log("target", target);
     let { value, name: field, type } = target;
-    // value = type === "number" ? +value : value;
     setFilterByToEdit((prevFilter) => {
       return { ...prevFilter, [field]: value };
     });
@@ -23,7 +21,6 @@ export function NoteFilter({ onSetFilter }) {
   function onSubmitFilter(ev) {
     ev.preventDefault();
     onSetFilter(filterByToEdit);
-    console.log("filter", filterByToEdit);
   }
 
   return (
