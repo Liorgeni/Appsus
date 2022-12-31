@@ -1,5 +1,5 @@
 const { useState, useEffect } = React;
-const { Link } = ReactRouterDOM;
+const { Link , Outlet} = ReactRouterDOM;
 
 import { NoteList } from "../cmps/note-list.jsx";
 import { NoteAdd } from "../cmps/note-add.jsx";
@@ -57,6 +57,7 @@ export function NoteIndex() {
         <NoteAdd onAddNewNote={onAddNewNote} />
       </div>
       <div>
+    <Outlet />
         <NoteList
           notes={notes}
           setNotes={setNotes}
