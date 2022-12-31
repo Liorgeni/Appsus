@@ -28,3 +28,20 @@
     margin-left: 20px;
 }
 
+.mail-index h1{
+    font-family: 'Zen Dots', cursive;
+
+}
+
+
+@media (max-width: 1200px){
+    .mail-index-side-nav{
+        display: none;
+    }
+    .mail-index-main{
+        flex-direction: column;
+    }
+
+   
+}
+

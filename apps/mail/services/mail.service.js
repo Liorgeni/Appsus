@@ -102,6 +102,7 @@ function getEmptyMail(subject = '', body = '', to = '') {
         trash: false,
         draft: false,
         inbox: true,
+        starred: false,
     }
 }
 
@@ -120,6 +121,7 @@ function _createMails() {
                 trash: false,
                 draft: false,
                 inbox: true,
+                starred: false,
             },
             {
                 id: 'e102',
@@ -132,6 +134,7 @@ function _createMails() {
                 trash: false,
                 draft: false,
                 inbox: true,
+                starred: false,
             },
             {
                 id: 'e103',
@@ -144,6 +147,7 @@ function _createMails() {
                 trash: false,
                 draft: false,
                 inbox: true,
+                starred: false,
             },
             {
                 id: 'e104',
@@ -156,6 +160,7 @@ function _createMails() {
                 trash: false,
                 draft: false,
                 inbox: true,
+                starred: false,
             },
             {
                 id: 'e105',
@@ -168,6 +173,7 @@ function _createMails() {
                 trash: false,
                 draft: false,
                 inbox: true,
+                starred: false,
             },
             {
                 id: 'e106',
@@ -180,6 +186,7 @@ function _createMails() {
                 trash: false,
                 draft: false,
                 inbox: false,
+                starred: false,
             },
             {
                 id: 'e107',
@@ -192,6 +199,7 @@ function _createMails() {
                 trash: true,
                 draft: false,
                 inbox: false,
+                starred: false,
             },
             {
                 id: 'e108',
@@ -204,6 +212,7 @@ function _createMails() {
                 trash: true,
                 draft: false,
                 inbox: false,
+                starred: false,
             },
             {
                 id: 'e109',
@@ -216,6 +225,7 @@ function _createMails() {
                 trash: false,
                 draft: true,
                 inbox: false,
+                starred: false,
             }
         ]
 
@@ -223,12 +233,4 @@ function _createMails() {
     }
 }
 
-function _createMailStorage(inbox = [], sent = [], trash = [], draft = []) {
-    const mailStorage = {
-        inbox,
-        sent,
-        trash,
-        draft,
-    }
-    return mailStorage
-}
+

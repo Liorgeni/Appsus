@@ -13,7 +13,43 @@
 .search-btn{
     border-style: none;
     background-color: var(--clr1);
-    padding: 3px;
+    padding: 5px;
     border-radius: 16px;
 
 }
+
+.search-btn .material-symbols-outlined:hover{
+    background-color: var(--clr5);
+    
+}
+
+.search-btn:hover{
+    background-color: var(--clr5);
+}
+
+.filter-compose{
+    display: none;
+}
+
+@media (max-width: 1200px){
+    .filter-mails{
+        flex-direction: column;
+    }
+    .search-box{
+        width: 13.71em;
+        height: 1.571em;
+        border-radius: 16px;
+        border-style: none;
+        margin:0 auto;
+        background-color: var(--clr1);
+        margin: 10px 0;
+    }
+    .filter-compose{
+        display: inline-block;
+    }
+    
+}
+
+
+
+

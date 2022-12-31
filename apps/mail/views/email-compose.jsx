@@ -63,7 +63,7 @@ export function EmailCompose() {
             <hr/>
    <label htmlFor="body"></label>
             <textarea type="text"
-            rows="4" cols="50"
+            
                 name="body"
                 id="body"
                 // placeholder="To"
@@ -71,7 +71,6 @@ export function EmailCompose() {
                 onChange={handleChange}
             />
             <div>
-  <button>Send</button>
   <button>Send</button>
   <Link to="/mail">Cancel</Link>
   </div>

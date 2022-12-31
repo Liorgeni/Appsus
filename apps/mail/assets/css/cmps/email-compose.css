@@ -7,8 +7,7 @@
 .email-compose form{
     display: flex;
     flex-direction: column;
-    width: 500px;
-    
+    width: 500px;  
 }
 
 .email-compose input{
@@ -19,4 +18,31 @@
 
 .email-compose hr{
     width: 500px;
+}
+
+button{
+    box-shadow: rgba(0, 0, 0, 0) 0px 1px 2px 0px, rgba(0, 0, 0, 0) 0px 1px 3px 1px;
+    border-radius: 16px;
+    background-color: var(--clr2btn);
+    line-height: 2.2857em;
+    /* width: 8.5714em; */
+    height: 2.9285em;
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+}
+
+
+@media (max-width: 1200px){
+    .email-compose form{
+        width: 80%;  
+    }
+    
+    .email-compose input{
+        width: 80%;  
+    }
+    
+    .email-compose hr{
+        visibility: hidden; 
+    } 
 }

@@ -15,6 +15,15 @@
     
 }
 
+.mail-compose-btn .material-symbols-outlined:hover{
+    background-color: var(--clr2btn);
+}
+
+.mail-index-side-nav .material-symbols-outlined:hover{
+    background-color: transparent;
+    
+}
+
 .mail-compose-btn:hover{
     /* background-color: rgb(41, 32, 217);  */
     box-shadow:  inset 0px 0px 3px 0px rgb(85 85 85 / 53%)
@@ -50,4 +59,12 @@ margin-right: 20px;
     background-color: var(--clr5);
     color: var(--clr1btn);
     font-weight: 700;
+}
+
+
+@media (max-width: 1200px){
+    .mail-compose-btn{
+        margin: 0;
+        height: 2.9285em;
+    }   
 }

@@ -45,4 +45,15 @@ box-shadow:  inset 0px 0px 3px 0px rgb(85 85 85 / 53%)
 }
 
 
+@media (max-width: 1200px){
+    .email-list li{       
+        height: 4.8571em;
+    }  
+    .email-list{
+        
+        margin-right: 0
+        
+    }
+}
+
 

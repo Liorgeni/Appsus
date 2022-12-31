@@ -1,12 +1,13 @@
 header {
-    background: lightcyan;
+    background: var(--clr2btn);
     border-bottom: 2px solid white;
+    font-family: 'Zen Dots', cursive;
 }
 
 .app-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px 20px;
 }
 
 nav a {
@@ -18,7 +19,7 @@ nav a:active {
 }
 
 nav a.active {
-    color: darkblue;
+    color: rgb(28, 58, 146);
     font-weight: bold;
     text-decoration: overline;
 }
