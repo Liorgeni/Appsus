@@ -3,6 +3,5 @@ export const NoteType = {
   todo: "todo",
   image: "image",
   video: "video",
-  recording: "recording",
-  audio: "audio",
+  map: "map",
 };

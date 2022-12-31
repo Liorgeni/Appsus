@@ -14,6 +14,7 @@ export const noteService = {
   save,
   addNewNote,
   changeColor,
+  toggleIsPinned,
 };
 
 function query(filterBy = getDefaultFilter()) {
@@ -44,13 +45,14 @@ function _createNotes() {
         id: "n101",
         type: NoteType.text,
         style: { backgroundColor: "#fff" },
-        isPinned: true,
+        isPinned: false,
         info: { txt: "Fullstack Me Baby!" },
       },
       {
         id: "n102",
+        isPinned: false,
         type: NoteType.image,
-        style: { backgroundColor: "#00d" },
+        style: { backgroundColor: "#fff" },
         info: {
           url: "https://static.wixstatic.com/media/ac878b_c08a33f1105d4350b282a07a5867f969~mv2.jpg/v1/fit/w_1000%2Ch_1000%2Cal_c%2Cq_80/file.jpg",
         },
@@ -58,22 +60,24 @@ function _createNotes() {
       {
         id: "n103",
         type: NoteType.todo,
-        style: { backgroundColor: "#00d" },
+        isPinned: false,
+        style: { backgroundColor: "#fff" },
         info: {
           label: "Get my stuff together",
           todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 },
+            { txt: "Driving liscence", doneAt: null, isDone: false },
+            { txt: "Coding power", doneAt: 187111111, isDone: false },
           ],
         },
       },
       {
         id: "n104",
+        isPinned: false,
         type: NoteType.video,
         info: {
           url: "https://www.youtube.com/watch?v=SI8TN0EPmAw",
         },
-        style: { backgroundColor: "#00d" },
+        style: { backgroundColor: "#fff" },
       },
     ];
   }
@@ -105,6 +109,11 @@ function changeColor(note, color) {
   return save(note);
 }
 
+function toggleIsPinned(note, isPinned) {
+  note.isPinned = isPinned;
+  return save(note);
+}
+
 function addNewNote(noteType, data) {
   const newNote = {
     type: noteType,
@@ -116,7 +125,7 @@ function addNewNote(noteType, data) {
       newNote.info = { txt: data };
       break;
     case NoteType.todo:
-      newNote.info = { lable: data, todos: [] };
+      newNote.info = { lable: data, todos: [txt, doneAt, isDone] };
       break;
     case NoteType.image:
       newNote.info = { url: data };
@@ -125,8 +134,8 @@ function addNewNote(noteType, data) {
     case NoteType.video:
       newNote.info = { url: data };
       break;
-    case NoteType.recording:
-      newNote.info = { url: data };
+    case NoteType.map:
+      newNote.info = { address: data };
       break;
     default:
   }

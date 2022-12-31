@@ -3,19 +3,22 @@ import { NoteBar } from "./note-bar.jsx";
 import { NoteImage } from "./note-image/note-image.jsx";
 import { NoteVideo } from "./note-video/note-video.jsx";
 import { NoteText } from "./note-text/note-text.jsx";
-import { NoteRecord } from "./note-record/note-record.jsx";
+import { NoteMap } from "./note-record/note-record.jsx";
 import { NoteToDo } from "./note-todo/note-todo.jsx";
 
 import { NoteType } from "../global.vars.js";
 
-export function NotePreview({ note, notes, setNotes, onChangeColor }) {
-  console.log("note", note);
-
+export function NotePreview({
+  note,
+  notes,
+  setNotes,
+  onChangeColor,
+  onToggleIsPinned,
+}) {
   function getNote(noteType) {
     console.log("oooooo", noteType);
     switch (noteType) {
       case NoteType.text:
-        console.log("bbbbb");
         return <NoteText note={note} />;
       case NoteType.todo:
         return <NoteToDo note={note} />;
@@ -23,8 +26,8 @@ export function NotePreview({ note, notes, setNotes, onChangeColor }) {
         return <NoteImage note={note} />;
       case NoteType.video:
         return <NoteVideo note={note} />;
-      case NoteType.recording:
-        return <NoteRecord note={note} />;
+      case NoteType.map:
+        return <NoteMap note={note} />;
     }
   }
 
@@ -40,6 +43,7 @@ export function NotePreview({ note, notes, setNotes, onChangeColor }) {
         notes={notes}
         setNotes={setNotes}
         onChangeColor={onChangeColor}
+        onToggleIsPinned={onToggleIsPinned}
       />
     </article>
   );

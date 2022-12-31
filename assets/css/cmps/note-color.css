@@ -11,7 +11,7 @@
   border-radius: 20px;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0.2s, opacity 0.5s linear;
 }
 
 .platte-colors:hover .note-color {

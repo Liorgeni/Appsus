@@ -1,17 +1,7 @@
 import { NoteType } from "../global.vars.js";
 const { useEffect, useState } = React;
 
-// const NOTE_TYPE = {
-//   text: "text",
-//   todo: "todo",
-//   image: "image",
-//   video: "video",
-//   recording: "recording",
-//   audio: "audio",
-// };
-
 export function NoteAdd({ onAddNewNote }) {
-  const [note, setNote] = useState({});
   const [noteType, setNoteType] = useState(NoteType.text);
   const [noteData, setNoteData] = useState(NoteType.text);
 
@@ -28,13 +18,13 @@ export function NoteAdd({ onAddNewNote }) {
       case NoteType.text:
         return "Add new text note...";
       case NoteType.todo:
-        return "Add new todo list...";
+        return "Add your first todo...";
       case NoteType.image:
-        return "Add new image...";
+        return "Add image URL...";
       case NoteType.video:
         return "Add video URL...";
-      case NoteType.recording:
-        return "Add new recording...";
+      case NoteType.map:
+        return "Enter city name...";
     }
   }
 
@@ -100,13 +90,13 @@ export function NoteAdd({ onAddNewNote }) {
         <li>
           <span
             className={`material-symbols-outlined ${
-              noteType === NoteType.recording
+              noteType === NoteType.map
                 ? "material-symbols-outlined-active"
                 : ""
             }`}
-            onClick={() => setNoteType(NoteType.recording)}
+            onClick={() => setNoteType(NoteType.map)}
           >
-            radio_button_checked
+            add_location
           </span>
         </li>
         <li>

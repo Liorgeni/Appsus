@@ -7,6 +7,11 @@
   padding: 20px;
   position: relative;
   cursor: pointer;
+  display: block;
+}
+
+iframe {
+  max-width: 200px;
 }
 
 .note-preview img {

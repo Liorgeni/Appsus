@@ -26,16 +26,21 @@ export function NoteIndex() {
   }
 
   function onAddNewNote(noteType, data) {
-    noteService.addNewNote(noteType, data).then(() => {
-      console.log("ok");
+    noteService.addNewNote(noteType, data).then((newNotes) => {
+      setNotes[newNotes];
       loadNotes();
     });
   }
 
   function onChangeColor(note, color) {
-    console.log("1");
     noteService.changeColor(note, color).then(() => {
-      console.log("2");
+      loadNotes();
+    });
+  }
+
+  function onToggleIsPinned(note, isPinned) {
+    noteService.toggleIsPinned(note, isPinned).then((pinnedNotes) => {
+      setNotes[pinnedNotes];
       loadNotes();
     });
   }
@@ -56,9 +61,9 @@ export function NoteIndex() {
           notes={notes}
           setNotes={setNotes}
           onChangeColor={onChangeColor}
+          onToggleIsPinned={onToggleIsPinned}
         />
       </div>
     </section>
   );
 }
-// onChange={ev => setCmpType(ev.target.value)}

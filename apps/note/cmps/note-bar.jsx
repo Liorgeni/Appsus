@@ -2,16 +2,18 @@ import { noteService } from "../services/note.service.js";
 
 import { ColorSelect } from "./note-color.jsx";
 
-export function NoteBar({ note, notes, setNotes, onChangeColor }) {
+export function NoteBar({
+  note,
+  notes,
+  setNotes,
+  onChangeColor,
+  onToggleIsPinned,
+}) {
   function onRemoveNote(noteId) {
     noteService.remove(noteId).then(() => {
       const updatedNotes = notes.filter((note) => note.id !== noteId);
       setNotes(updatedNotes);
     });
-  }
-
-  function onPinNote(noteId) {
-    console.log("Note pinned", noteId);
   }
 
   function changeColor(color) {
@@ -23,7 +25,7 @@ export function NoteBar({ note, notes, setNotes, onChangeColor }) {
       <ul className="style-container flex clean-list space-between">
         <span
           className="material-symbols-outlined pin bar"
-          onClick={() => onPinNote(note.id)}
+          onClick={() => onToggleIsPinned(note, !note.isPinned)}
         >
           push_pin
         </span>
