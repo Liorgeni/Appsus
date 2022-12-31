@@ -8,6 +8,7 @@ export const mailService = {
     query,
     getEmptyMail,
     getDefaultFilter,
+    getUnreadCount
 }
 const MAIL_KEY = 'mailDB'
 _createMails()
@@ -38,7 +39,13 @@ function query(filterBy) {
     return storageService.query(MAIL_KEY).then((mails) => {
         const type = filterBy.status
         // if (filterBy.status === 'inbox') {
-             mails = mails.filter(mail => mail[type])         
+            if(type === 'unread'){
+                mails = mails.filter(mail => !mail.isRead)
+            } else if(type === 'read') {
+                mails = mails.filter(mail => mail.isRead)         
+            } else{
+                mails = mails.filter(mail => mail[type])         
+            }
         // }
         // if (filterBy.status === 'sent') {
         //     mails = mails.filter(mail => mail.sent)
@@ -63,6 +70,12 @@ function query(filterBy) {
     })
 }
 
+function getUnreadCount(){
+    return storageService.query(MAIL_KEY).then((mails) => {
+        const count = mails.filter(mail => !mail.isRead && mail.inbox).length
+        return count
+    })
+}
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
 }

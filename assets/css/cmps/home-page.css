@@ -7,3 +7,16 @@
 .home{
     justify-content: space-evenly;
 }
+
+@media (max-width: 1200px){
+    
+    .home{
+        flex-direction: column;
+    }
+    .home-img{
+        width: 200px;
+        /* margin: 50px; */
+    }
+
+   
+}

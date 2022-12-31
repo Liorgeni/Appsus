@@ -1,7 +1,7 @@
 const { Link } = ReactRouterDOM
 const { useEffect, useState } = React
 
-export function EmailSideNav({ onChangeFilterType }) {
+export function EmailSideNav({ onChangeFilterType, unreadCounter }) {
     const [select, setSelect] = useState({ inbox: true, draft: false, trash: false, starred: false, sent: false })
 
     //     useEffect(()=>{
@@ -27,7 +27,6 @@ export function EmailSideNav({ onChangeFilterType }) {
     function changeFilterType(folder) {
         onChangeFilterType(folder)
     }
-
     return (
         <section>
             <Link to='/mail/compose'>
@@ -38,8 +37,8 @@ export function EmailSideNav({ onChangeFilterType }) {
             </Link>
             {console.log('select', select)}
             <Link onClick={() => setSelectedFolder('inbox')} to='/mail' className='side-nav-btn'>
-                <span className={`flex align-center ${select.inbox ? 'selected' : ''}`}>
-                    <span class='material-symbols-outlined'>inbox</span>Inbox
+                <span className={`flex space-between align-center ${select.inbox ? 'selected' : ''}`}>
+                    <span class='material-symbols-outlined'>inbox</span><span>Inbox</span><span>{unreadCounter}</span>
                 </span>
             </Link>
             <Link onClick={() => setSelectedFolder('trash')} to='/mail' className='side-nav-btn'>

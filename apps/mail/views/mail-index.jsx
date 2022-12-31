@@ -13,12 +13,13 @@ export function MailIndex() {
     const [mailList, setMailList] = useState([])
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [folderSelect, setFolderSelect] = useState('inbox')
+    const [unreadCounter, setUnreadCounter] = useState(onUnreadCount())
 
     const navigate = useNavigate()
 
     useEffect(() => {
         loadMails()
-    }, [filterBy, isDetailsOpen])
+    }, [filterBy, isDetailsOpen, unreadCounter])
 
     function loadMails() {
         setIsLoading(true)
@@ -31,12 +32,14 @@ export function MailIndex() {
         })
     }
 
-    function onSetRead(mail) {
+    function onSetRead(mail) { 
         mailService.save(mail).then(() => {
             setIsDetailsOpen(true)
+            onUnreadCount()
         })
     }
     function onChangeFolder(mailId, changeOption) {
+        
         mailService.get(mailId).then((mail) => {
             let readMail
             if (!mail.starred) {
@@ -46,6 +49,7 @@ export function MailIndex() {
             }
             mailService.save(readMail).then(() => {
                 setIsDetailsOpen(false)
+                onUnreadCount()
             })
         })
     }
@@ -62,7 +66,11 @@ export function MailIndex() {
     function onChangeFilterType(filterType) {
         onSetFilter((prevFilter) => ({ ...prevFilter, status: filterType }))
     }
-
+function onUnreadCount(){
+mailService.getUnreadCount().then(count=> {
+    setUnreadCounter(prev=> prev = count)
+})
+}
     return (
         <section className='mail-index flex'>
             <section className='mail-index-header'></section>
@@ -72,7 +80,7 @@ export function MailIndex() {
             <EmailFilter onSetFilter={onSetFilter} />
             <section className='mail-index-main flex'>
                 <section className='mail-index-side-nav flex'>
-                    <EmailSideNav onChangeFilterType={onChangeFilterType} />
+                    <EmailSideNav onChangeFilterType={onChangeFilterType} unreadCounter={unreadCounter} onUnreadCount={onUnreadCount}/>
                 </section>
                 <section className='mail-index-list'>
                     {!isLoading && !isDetailsOpen && <EmailList mailList={mailList} onSetRead={onSetRead} />}
