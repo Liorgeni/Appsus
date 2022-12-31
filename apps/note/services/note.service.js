@@ -14,6 +14,7 @@ export const noteService = {
   changeColor,
   toggleIsPinned,
   get,
+  updateNote,
 };
 
 function query(filterBy = getDefaultFilter()) {
@@ -143,6 +144,19 @@ function addNewNote(noteType, data) {
       break;
     default:
   }
+
+  return save(newNote);
+}
+
+function updateNote(noteId, data) {
+  const newNote = {
+    id: noteId,
+    style: { backgroundColor: "#fff" },
+    isPinned: false,
+    info: {
+      txt: data,
+    },
+  };
 
   return save(newNote);
 }

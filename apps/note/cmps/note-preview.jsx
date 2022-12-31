@@ -1,6 +1,6 @@
-import { NoteBar } from "./note-bar.jsx";
 const { Link } = ReactRouterDOM;
 
+import { NoteBar } from "./note-bar.jsx";
 import { NoteImage } from "./note-image/note-image.jsx";
 import { NoteVideo } from "./note-video/note-video.jsx";
 import { NoteText } from "./note-text/note-text.jsx";
@@ -38,7 +38,7 @@ export function NotePreview({
       style={{ backgroundColor: note.style.backgroundColor }}
     >
       {getNote(note.type)}
-      <Link to={`/note/${note.id}`}>Edit note</Link>
+      {/* <Link to={`/note/${note.id}`}>Edit note</Link> */}
 
       <NoteBar
         note={note}

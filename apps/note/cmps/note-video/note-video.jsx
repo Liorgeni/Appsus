@@ -3,7 +3,7 @@ export function NoteVideo({ note }) {
 
   return (
     <div>
-      <iframe src={url} frameborder="0" allowfullscreen></iframe>
+      <iframe src={url} frameBorder="0" allowFullScreen></iframe>
     </div>
   );
 }

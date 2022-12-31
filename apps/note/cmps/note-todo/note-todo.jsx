@@ -4,14 +4,11 @@ export function NoteToDo({ note }) {
   //     event.preventDefault();
   // }
 
-  console.log("note", note);
-
   return (
     <ul className="innerNote">
       <h1>{note.info.lable}</h1>
 
       {note.info.todos.map((todo, i) => {
-        console.log("todo", todo);
         const isDone = todo.isDone ? "done" : "";
         return (
           <li className="todo-item " key={i}>

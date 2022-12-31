@@ -1,5 +1,5 @@
 const { useState, useEffect } = React;
-const { Link , Outlet} = ReactRouterDOM;
+const { Link, Outlet } = ReactRouterDOM;
 
 import { NoteList } from "../cmps/note-list.jsx";
 import { NoteAdd } from "../cmps/note-add.jsx";
@@ -10,10 +10,11 @@ import { noteService } from "../services/note.service.js";
 export function NoteIndex() {
   const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter());
   const [notes, setNotes] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     loadNotes();
-  }, [filterBy]);
+  }, [filterBy, isModalOpen]);
 
   function loadNotes() {
     noteService.query(filterBy).then((notesToUpdate) => {
@@ -38,14 +39,16 @@ export function NoteIndex() {
     });
   }
 
+  // function onToggleModalDisplay() {
+  //   setIsModalOpen(!isModalOpen);
+  // }
+
   function onToggleIsPinned(note, isPinned) {
     noteService.toggleIsPinned(note, isPinned).then((pinnedNotes) => {
       setNotes[pinnedNotes];
       loadNotes();
     });
   }
-
-  console.log("notes", notes);
 
   return (
     <section className="note-index">
@@ -57,7 +60,7 @@ export function NoteIndex() {
         <NoteAdd onAddNewNote={onAddNewNote} />
       </div>
       <div>
-    <Outlet />
+        {/* <Outlet /> */}
         <NoteList
           notes={notes}
           setNotes={setNotes}
