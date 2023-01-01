@@ -6,7 +6,7 @@ export function NoteToDo({ note }) {
 
   return (
     <ul className="innerNote">
-      <h1>{note.info.lable}</h1>
+      <h1 className="todo-title">Todo!</h1>
 
       {note.info.todos.map((todo, i) => {
         const isDone = todo.isDone ? "done" : "";

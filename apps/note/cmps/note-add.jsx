@@ -5,7 +5,7 @@ export function NoteAdd({ onAddNewNote }) {
   const [noteType, setNoteType] = useState(NoteType.text);
   const [noteData, setNoteData] = useState(NoteType.text);
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   function onAddNote() {
     onAddNewNote(noteType, noteData);
@@ -16,7 +16,7 @@ export function NoteAdd({ onAddNewNote }) {
       case NoteType.text:
         return "Add new text note...";
       case NoteType.todo:
-        return "Add your todo list title...";
+        return "Add your first todo...";
       case NoteType.image:
         return "Add image URL...";
       case NoteType.video:
@@ -96,11 +96,12 @@ export function NoteAdd({ onAddNewNote }) {
           </span>
         </li>
         <li>
+          {" "}
           <span
-            className="material-symbols-outlined"
+            className="material-symbols-outlined add-note"
             onClick={() => onAddNote()}
           >
-            note_add
+            add_notes
           </span>
         </li>
       </ul>

@@ -44,7 +44,7 @@ function _createNotes() {
         type: NoteType.text,
         style: { backgroundColor: "#fff" },
         isPinned: false,
-        info: { txt: "Fullstack Me Baby!" },
+        info: { txt: "My first Note!" },
       },
       {
         id: "n102",
@@ -52,7 +52,7 @@ function _createNotes() {
         type: NoteType.image,
         style: { backgroundColor: "#fff" },
         info: {
-          url: "https://static.wixstatic.com/media/ac878b_c08a33f1105d4350b282a07a5867f969~mv2.jpg/v1/fit/w_1000%2Ch_1000%2Cal_c%2Cq_80/file.jpg",
+          url: "https://media.wired.com/photos/5ca648a330f00e47fd82ae77/191:100/w_1280,c_limit/Culture_Matrix_Code_corridor.jpg",
         },
       },
       {
@@ -61,10 +61,11 @@ function _createNotes() {
         isPinned: false,
         style: { backgroundColor: "#fff" },
         info: {
-          label: "Get my stuff together",
+          label: "Sprint weekend",
           todos: [
-            { txt: "Driving liscence", doneAt: null, isDone: false },
-            { txt: "Coding power", doneAt: 187111111, isDone: false },
+            { txt: "pull", doneAt: null, isDone: false },
+            { txt: "commit", doneAt: 187111111, isDone: false },
+            { txt: "push", doneAt: 187111111, isDone: false },
           ],
         },
       },
@@ -73,7 +74,16 @@ function _createNotes() {
         isPinned: false,
         type: NoteType.video,
         info: {
-          url: "https://www.youtube.com/watch?v=SI8TN0EPmAw",
+          url: "https://www.youtube.com/watch?v=P0SOsgwqlnY",
+        },
+        style: { backgroundColor: "#fff" },
+      },
+      {
+        id: "n105",
+        isPinned: false,
+        type: NoteType.map,
+        info: {
+          url: `https://maps.google.com/maps?q=paris&t=&z=13&ie=UTF8&iwloc=&output=embed`,
         },
         style: { backgroundColor: "#fff" },
       },

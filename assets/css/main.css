@@ -30,5 +30,6 @@
 @import "./cmps/home-page.css";
 @import "./cmps/about-page.css";
 @import "./cmps/note-edit.css";
+@import "./cmps/note-todo.css";
 
 /* @import './apps/mail/cmps/mail-list.css'; */

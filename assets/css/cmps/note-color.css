@@ -2,7 +2,7 @@
   position: absolute;
   bottom: 10px;
   right: -500%;
-  left: 150px;
+  left: 120px;
   width: 160px;
   height: 80px;
   padding-top: 5px;
@@ -11,13 +11,14 @@
   border-radius: 20px;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.2s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .platte-colors:hover .note-color {
   position: absolute;
   visibility: visible;
   opacity: 1;
+  z-index: 999;
 }
 
 .note-color-item {
@@ -33,4 +34,10 @@
 
 .note-color-item:hover {
   border: 1.5px solid rgb(0, 0, 0);
+}
+
+@media (max-width: 600px) {
+  .note-color {
+    left: 100px;
+  }
 }

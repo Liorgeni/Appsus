@@ -1,4 +1,5 @@
 import { noteService } from "../services/note.service.js";
+const { Link } = ReactRouterDOM;
 
 import { ColorSelect } from "./note-color.jsx";
 
@@ -29,21 +30,24 @@ export function NoteBar({
         >
           push_pin
         </span>
-
-        <li
-          className="material-symbols-outlined bar"
-          onClick={() => onRemoveNote(note.id)}
-        >
-          delete
+        <li>
+          {/* <span className="material-symbols-outlined bar">mail</span> */}
+          <Link to={`/note/${note.id}`}>
+            <span className="material-symbols-outlined bar">edit</span>
+          </Link>
         </li>
+
         <li>
           <div className="platte-colors wrap flex justify-center">
             <span className="material-symbols-outlined bar">palette</span>
             <ColorSelect changeColor={changeColor} />
           </div>
         </li>
-        <li>
-          <span className="material-symbols-outlined bar">mail</span>
+        <li
+          className="material-symbols-outlined bar"
+          onClick={() => onRemoveNote(note.id)}
+        >
+          delete
         </li>
       </ul>
     </section>

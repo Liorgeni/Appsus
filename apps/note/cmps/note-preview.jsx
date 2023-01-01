@@ -4,7 +4,7 @@ import { NoteBar } from "./note-bar.jsx";
 import { NoteImage } from "./note-image/note-image.jsx";
 import { NoteVideo } from "./note-video/note-video.jsx";
 import { NoteText } from "./note-text/note-text.jsx";
-import { NoteMap } from "./note-record/note-record.jsx";
+import { NoteMap } from "./note-map/note-map.jsx";
 import { NoteToDo } from "./note-todo/note-todo.jsx";
 
 import { NoteType } from "../global.vars.js";
@@ -38,7 +38,6 @@ export function NotePreview({
       style={{ backgroundColor: note.style.backgroundColor }}
     >
       {getNote(note.type)}
-      {/* <Link to={`/note/${note.id}`}>Edit note</Link> */}
 
       <NoteBar
         note={note}

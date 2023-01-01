@@ -25,3 +25,24 @@ iframe {
 .note-preview:hover {
   box-shadow: 0 2px 6px 8px rgba(0, 0, 0, 0.2);
 }
+
+.edit-btn {
+  box-shadow: rgb(0 0 0 / 0%) 0px 1px 2px 0px, rgb(0 0 0 / 0%) 0px 1px 3px 1px;
+  cursor: pointer;
+  margin: 0px;
+  border-radius: 0;
+  margin-top: 5px;
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.edit-btn:hover {
+  box-shadow: rgb(0 0 0 / 0%) 0px 1px 2px 0px, rgb(0 0 0 / 0%) 0px 1px 3px 1px;
+  cursor: pointer;
+  border-radius: 0;
+  background-color: rgb(238, 236, 236);
+  margin: 0px;
+  margin-top: 5px;
+
+  border: 1px solid black;
+}
