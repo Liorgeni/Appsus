@@ -20,7 +20,7 @@ export function NoteEdit() {
   useEffect(() => {
     if (!noteId) return;
     loadNote();
-  }, []);
+  }, [noteId]);
 
   function loadNote() {
     noteService
@@ -91,7 +91,7 @@ export function NoteEdit() {
     }
   }
 
-  if (!noteToEdit.id) return <div> Loading...</div>;
+  if (!noteToEdit.id) return <div className="loading"> Loading...</div>;
   return (
     <article
       key={noteToEdit.id}
