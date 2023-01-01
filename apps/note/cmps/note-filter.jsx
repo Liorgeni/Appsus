@@ -46,11 +46,11 @@ export function NoteFilter({ onSetFilter }) {
           onChange={handleChange}
         >
           <option value="">--Select--</option>
-          <option value="txt">Text</option>
+          <option value="text">Text</option>
           <option value="todo">Todo</option>
-          <option value="img">Image</option>
+          <option value="image">Image</option>
           <option value="video">Video</option>
-          <option value="record">Voice records</option>
+          <option value="map">Map</option>
         </select>
 
         {/* <button>Filter</button> */}
