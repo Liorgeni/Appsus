@@ -26,9 +26,6 @@ export function MailIndex() {
         mailService.query(filterBy).then((mailList) => {
             setMailList(mailList)
             setIsLoading(false)
-            // mailService.query().then((mails) => {
-            //     setMailList(mails)
-            //     setIsLoading(false)
         })
     }
 
@@ -91,11 +88,8 @@ mailService.getUnreadCount().then(count=> {
                     {!mailList.length && <div>No mails to show..</div>}
                 </section>
             </section>
-            {/* <div className="nested-route">
-            <Outlet />
-        </div> */}
         </section>
     )
 }
 
-// onClick={setIsDetailsOpen(false)}
+

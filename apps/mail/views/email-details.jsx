@@ -36,7 +36,6 @@ if (!mail) return <div>Loading...</div>
     return <section className="mail-details">
         <h1>{mail.subject}</h1>
         <p>{mail.body}</p>
-        {/* <button onClick={onGoBack}>Go Back</button> */}
         <hr />
         <Link to={`/mail/details/${nextMailId}`}>Next Email</Link>
 

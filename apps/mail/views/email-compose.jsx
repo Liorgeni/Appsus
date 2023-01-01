@@ -1,4 +1,4 @@
-const { useState, useEffect } = React
+const { useState } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
@@ -11,23 +11,9 @@ export function EmailCompose() {
     const navigate = useNavigate()
     const { mailId } = useParams()
 
-    // useEffect(() => {
-    //     if (!mailId) return
-    //     loadCar()
-    // }, [])
-
-    // function loadCar() {
-    //     carService.get(mailId)
-    //         .then((car) => setMailToSend(car))
-    //         .catch((err) => {
-    //             console.log('Had issues in car details', err)
-    //             navigate('/car')
-    //         })
-    // }
 
     function handleChange({ target }) {
         let { value, type, name: field } = target
-        // value = type === 'number' ? +value : value
         setMailToSend((prevMail) => ({ ...prevMail, [field]: value , inbox: false , sent: true}))
     }
 
@@ -47,8 +33,6 @@ export function EmailCompose() {
             <input type="email"
                 name="to"
                 id="to"
-                // placeholder="To"
-                // value={carToEdit.vendor}
                 onChange={handleChange}
             />
             <hr/>
@@ -56,8 +40,6 @@ export function EmailCompose() {
             <input type="text"
                 name="subject"
                 id="subject"
-                // placeholder="To"
-                // value={carToEdit.vendor}
                 onChange={handleChange}
             />
             <hr/>
@@ -66,8 +48,6 @@ export function EmailCompose() {
             
                 name="body"
                 id="body"
-                // placeholder="To"
-                // value={carToEdit.vendor}
                 onChange={handleChange}
             />
             <div>
